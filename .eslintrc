@@ -1,0 +1,7 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["react-app", "react-app/jest", "plugin:@typescript-eslint/eslint-recommended"],
+    "rules": { "max-len": [1, { "code": 100 }] }
+}

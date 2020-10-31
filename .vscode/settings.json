@@ -1,0 +1,20 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[json]": {
+        "editor.formatOnSave": true
+    },
+    "[html]": {
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false
+    },
+    "editor.formatOnSave": true,
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "typescript.suggest.autoImports": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": true
+}

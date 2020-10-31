@@ -1,0 +1,21 @@
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reset-btn {
+}
+
+@media screen and (max-width: 781px) {
+    .header {
+        font-size: 0.9rem;
+    }
+}

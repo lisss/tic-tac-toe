@@ -43,7 +43,7 @@
     margin-top: 48px;
 }
 
-.matrix-disabled {
+.disabled {
     pointer-events: none;
 }
 
@@ -57,21 +57,21 @@
     justify-content: center;
     width: 72px;
     height: 72px;
-    border: #282c34 1px solid;
+    border: #384047 2px solid;
     cursor: pointer;
     font-size: 2rem;
 }
 
 .result-win {
-    color: green;
+    color: #15c39a;
 }
 
 .result-loss {
-    color: red;
+    color: #e04f42;
 }
 
 .result-draw {
-    color: grey;
+    color: #aeb5bc;
 }
 
 .result-message {

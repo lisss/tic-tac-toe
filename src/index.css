@@ -3,6 +3,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
         'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
+    color: #384047;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -11,19 +12,19 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-button,
 select {
     outline: none;
     background-color: white;
-    border: 1px solid grey;
-    border-radius: 2px;
-    padding: 0.5rem 1rem;
+    border: 1px solid #dadfe1;
+    border-radius: 18px;
+    padding: 0.7rem 1rem;
     font-size: 1rem;
     cursor: pointer;
+    color: #384047;
 }
 
 @media screen and (max-width: 781px) {
-    button {
+    select {
         font-size: 0.9rem;
     }
 }

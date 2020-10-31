@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useImperativeHandle, useState } from 'react';
-import { Player } from '../PlayerSelect';
 import cloneDeep from 'lodash/cloneDeep';
+import { Player, GameMode } from '../types';
 import './styles.css';
 
 const DIMENSION = 3;
@@ -28,6 +28,7 @@ interface State {
 }
 
 interface GameProps {
+    mode: GameMode;
     player: Player;
 }
 
@@ -50,6 +51,7 @@ const baseState: State = {
 };
 
 export const GameComponent = ({
+    mode,
     player,
     forwardedRef,
 }: GameProps & { forwardedRef: React.Ref<GameMethods> }) => {
@@ -114,7 +116,7 @@ export const GameComponent = ({
     );
 
     useEffect(() => {
-        if (gameState.isComputerTurn) {
+        if (mode === GameMode.Single && gameState.isComputerTurn) {
             const timer = setTimeout(() => {
                 const { x, y } = availableCells[Math.floor(Math.random() * availableCells.length)];
                 const copy = [...gameState.matrix];
@@ -131,7 +133,7 @@ export const GameComponent = ({
 
             return () => clearTimeout(timer);
         }
-    }, [availableCells, gameState, player, updateAvailableCells, checkIsSuccess]);
+    }, [availableCells, gameState, mode, player, updateAvailableCells, checkIsSuccess]);
 
     useImperativeHandle(
         forwardedRef,
@@ -177,18 +179,18 @@ export const GameComponent = ({
                       };
                   case 'loss':
                       return {
-                          resultMessage: "Sorry, you've lost",
+                          resultMessage: "Sorry, you've lost :(",
                           resultClass: 'result-loss',
                       };
                   case 'draw':
-                      return { resultMessage: 'Draw', resultClass: 'result-draw' };
+                      return { resultMessage: 'Draw ¯\\_(ツ)_/¯', resultClass: 'result-draw' };
               }
           })()
         : { resultMessage: null, resultClass: undefined };
 
     return (
         <div className="game-wrapper">
-            <div className={`matrix ${result ? 'matrix-disabled' : ''}`}>
+            <div className={`matrix ${result ? 'disabled' : ''}`}>
                 {gameState.matrix.map((row, i) => (
                     <div className="matrix-row" key={i}>
                         {row.map(cell => (
@@ -196,7 +198,9 @@ export const GameComponent = ({
                                 className={`matrix-cell ${
                                     filledCells.some(x => x === cell.coords)
                                         ? resultClass
-                                        : undefined
+                                        : result === 'draw'
+                                        ? 'result-draw'
+                                        : ''
                                 }`}
                                 key={cell.coords.y}
                                 id={`cell_${cell.coords.x}_${cell.coords.y}`}

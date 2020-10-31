@@ -137,26 +137,31 @@ export const GameComponent = ({
         forwardedRef,
         () => {
             return {
-                reset: () => setGameState(initialState),
+                reset: () => {
+                    setGameState(initialState);
+                    setAvailableCells(availableCellsInit);
+                },
             };
         },
-        [initialState],
+        [initialState, availableCellsInit],
     );
 
     const onClick = useCallback(
         (cellItem: CellItem) => {
             const { x, y } = cellItem.coords;
             const copy = [...gameState.matrix];
-            copy[x][y].value = player;
-            const isLastCell = availableCells.length === 1;
-            setGameState({
-                ...gameState,
-                matrix: copy,
-                isComputerTurn: !isLastCell,
-                result: isLastCell ? 'draw' : null,
-            });
-            updateAvailableCells({ x, y });
-            checkIsSuccess(cellItem);
+            if (!copy[x][y].value) {
+                copy[x][y].value = player;
+                const isLastCell = availableCells.length === 1;
+                setGameState({
+                    ...gameState,
+                    matrix: copy,
+                    isComputerTurn: !isLastCell,
+                    result: isLastCell ? 'draw' : null,
+                });
+                updateAvailableCells({ x, y });
+                checkIsSuccess(cellItem);
+            }
         },
         [gameState, player, availableCells, updateAvailableCells, checkIsSuccess],
     );

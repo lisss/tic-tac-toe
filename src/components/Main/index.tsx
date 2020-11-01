@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Select } from '../components/Select';
+import { Select } from '../Select';
 import { Game, GameMethods } from '../Game';
-import { Player, GameMode } from '../types';
+import { Player, GameMode } from '../../types';
 import './styles.css';
-import { ReactComponent as Reset } from '../components/Icons/reset.svg';
-import { ReactComponent as Logo } from '../components/Icons/logo.svg';
+import { ReactComponent as Reset } from '../Icons/reset.svg';
+import { ReactComponent as Logo } from '../Icons/logo.svg';
 
 export const Main = () => {
     const [player, setPlayer] = useState<Player>(Player.X);

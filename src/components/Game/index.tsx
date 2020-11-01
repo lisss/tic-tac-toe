@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useImperativeHandle, useState } from 'react';
 import cloneDeep from 'lodash/cloneDeep';
-import { Player, GameMode } from '../types';
+import { Player, GameMode } from '../../types';
 import './styles.css';
 
 const DIMENSION = 3;

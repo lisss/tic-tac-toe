@@ -28,3 +28,9 @@ select {
         font-size: 0.9rem;
     }
 }
+
+@media screen and (max-width: 320px) {
+    select {
+        padding: 0.5rem 0.9rem;
+    }
+}
